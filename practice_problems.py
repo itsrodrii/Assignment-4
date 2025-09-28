@@ -13,8 +13,12 @@ Output: False
 """
 
 def has_duplicates(product_ids):
-    # Your implementation here
-    pass
+    """
+    I used a set because it automatically removes duplicates, so it's easy to check 
+    if anything repeats. The only operation here is turning the list into a set, 
+    which goes through the list once.
+    """
+    return len(product_ids) != len(set(product_ids))
 
 
 """
@@ -32,14 +36,23 @@ task_queue.remove_oldest_task() → "Email follow-up"
 
 class TaskQueue:
     def __init__(self):
-        # Your initialization here
-        pass
+        self.queue = []
 
     def add_task(self, task):
-        pass
+        """
+        I chose a list since it keeps tasks in order the way they were added. 
+        Adding with append is quick and simple.
+        """
+        self.queue.append(task)
 
     def remove_oldest_task(self):
-        pass
+        """
+        I remove from the front with pop(0) because that gives me the oldest task. 
+        It's not the fastest way, but it works fine for small cases.
+        """
+        if self.queue:
+            return self.queue.pop(0)
+        return None
 
 
 """
@@ -57,10 +70,18 @@ tracker.get_unique_count() → 2
 
 class UniqueTracker:
     def __init__(self):
-        pass
+        self.unique_values = set()
 
     def add(self, value):
-        pass
+        """
+        I used a set so that I don't have to worry about duplicates. 
+        Adding new values is straightforward.
+        """
+        self.unique_values.add(value)
 
     def get_unique_count(self):
-        pass
+        """
+        Getting the count is just checking the size of the set. 
+        It's a direct way to know how many unique numbers we've seen.
+        """
+        return len(self.unique_values)
